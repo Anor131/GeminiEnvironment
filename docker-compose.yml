@@ -1,0 +1,28 @@
+services:
+  node-app:
+    build:
+      context: .
+      dockerfile: Dockerfile.node
+    container_name: gemini_node_app
+    restart: unless-stopped
+    command: ["tail", "-f", "/dev/null"]
+    # The Node.js app doesn't expose a port, but if it did, you would add:
+    # ports:
+    #   - "8080:8080"
+
+  python-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: gemini_python_agent
+    restart: unless-stopped
+    # This service requires environment variables to run.
+    # You should create a .env file in this directory with the following content:
+    # GMAIL_USER=your_email@gmail.com
+    # GMAIL_PASS=your_app_password
+    # AI_API_KEY=your_gemini_api_key
+    # It also requires a 'credentials.json' for Google Sheets access.
+    env_file:
+      - ./.env
+    volumes:
+      - ./creds/credentials.json:/app/credentials.json:ro

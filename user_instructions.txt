@@ -1,0 +1,15 @@
+The `invoice-bot` application is now running correctly from a technical standpoint. However, it encountered a Google API error:
+
+`APIError: [403]: Google Drive API has not been used in project 99074569916 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/drive.googleapis.com/overview?project=99074569916 then retry.`
+
+This means that the Google Drive API is not enabled for the Google Cloud Project associated with your `credentials.json` file. You need to manually enable this API in your Google Cloud Console.
+
+**Please do the following:**
+1.  Visit the URL provided in the error message: `https://console.developers.google.com/apis/api/drive.googleapis.com/overview?project=99074569916`
+2.  Log in to your Google Cloud account if prompted.
+3.  Enable the "Google Drive API" for your project.
+4.  Once enabled, wait a few minutes for the changes to propagate.
+5.  Then, you can run the `docker run` command again:
+    `docker run -it --rm -v ${PWD}/creds:/app/creds -e GMAIL_USER="adnananor187@gmail.com" -e GMAIL_PASS="ekny qbqu gqcq vumb" -e AI_API_KEY="AIzaSyDUxspg3tbTYjEH0bHFFK61NMXcdAm2EEI" invoice-bot`
+
+I have resolved all technical issues related to the Docker setup and code. The remaining step requires manual intervention from you to configure your Google Cloud Project.

@@ -1,0 +1,14 @@
+{
+  "allowed_actions": [
+    "open_app",
+    "run_cmd",
+    "create_file",
+    "edit_file",
+    "install_package"
+  ],
+  "blocked_actions": [
+    "delete_system_files",
+    "format_disk",
+    "illegal_activity"
+  ]
+}
